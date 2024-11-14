@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #030925;
+}
+section {
+    background-color: #e0e0e0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+form h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+.inputbox {
+    position: relative;
+    margin-bottom: 30px;
+}
+.inputbox ion-icon {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 20px;
+    color: #999;
+}
+.inputbox input {
+    width: 100%;
+    padding: 10px 40px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.inputbox input:focus {
+    outline: none;
+    border-color: #333;
+}
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s;
+}
+.inputbox input:focus + label,
+.inputbox input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #333;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #030925;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #555;
+}
+.register {
+    margin-top: 20px;
+}
+.register p {
+    font-size: 14px;
+    color: #666;
+}
+.register a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.register a:hover {
+    color: #555;
+}
+@media (max-width: 400px) {
+    section {
+        width: 90%;
+        padding: 30px;
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de cadastro</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/css/auth/signup.css">
+    <script src="/js/signup.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+<section>
+    <form id="signup-form" action="/auth/signup" method="post">
+        <h1>Cadastre-se</h1>
+        <div class="inputbox">
+            <ion-icon name="person-outline"></ion-icon>
+            <input type="text" id="username" name="username" required>
+            <label for="username">Usuário</label>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="mail-outline"></ion-icon>
+            <input type="email" id="email" name="email" required>
+            <label for="email">E-mail</label>
+            <!-- Espaço para a mensagem de erro do email -->
+            <p id="email-error" style="color: red;"></p>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="password" name="password" required>
+            <label for="password">Senha</label>
+        </div>
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="passwordcon" name="passwordcon" required>
+            <label for="passwordcon">Confirme sua senha</label>
+            <!-- Espaço para a mensagem de erro da senha -->
+            <p id="password-error" style="color: red;"></p>
+        </div>
+        <button type="submit">Cadastre-se</button>
+        <div class="register">
+            <p>Já possui uma conta? <a href="/login">Login</a></p>
+        </div>
+    </form>
+</section>
+</body>
+</html>
