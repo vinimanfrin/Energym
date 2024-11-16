@@ -7,37 +7,76 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="/css/auth/signup.css">
     <script src="/js/signup.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 <section>
-    <form id="signup-form" action="/auth/signup" method="post">
-        <h1>Cadastre-se</h1>
-        <div class="inputbox">
-            <ion-icon name="person-outline"></ion-icon>
-            <input type="text" id="username" name="username" required>
-            <label for="username">Usuário</label>
+    <form id="signup-form" th:action="@{/req/signup}" th:object="${academiaCreateDTO}" method="post">
+        <h1>Cadastre sua Academia</h1>
+        <div class="form-columns">
+            <!-- Coluna para Login e Senha -->
+            <div class="column">
+                <h2>Dados de Login</h2>
+                <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" id="username" name="username" th:field="*{user.username}" placeholder="Usuário" required>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" id="email" name="email" th:field="*{user.email}" placeholder="E-mail" required>
+                    <p id="email-error" style="color: red;"></p>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" id="password" name="password" th:field="*{user.password}" placeholder="Senha" required>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" id="passwordcon" name="passwordcon" placeholder="Confirme sua senha aqui" required>
+                    <p id="password-error" style="color: red;"></p>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="document-outline"></ion-icon>
+                    <input type="text" th:field="*{cnpj}" id="cnpj" name="cnpj" placeholder="Cnpj">
+                    <div class="error-message" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></div>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="clipboard-outline"></ion-icon>
+                    <input type="text" th:field="*{nome}" id="nome" name="nome" placeholder="Nome da Academia">
+                    <div class="error-message" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                </div>
+            </div>
+
+            <!-- Coluna para Dados da Academia -->
+            <div class="column">
+                <h2>Endereço</h2>
+                <div class="inputbox">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.cep}" name="cep" id="cep" placeholder="Cep" required>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.numero}" name="numero" id="numero" placeholder="Número" required>
+                    <div class="error-message" th:if="${#fields.hasErrors('endereco.numero')}" th:errors="*{endereco.numero}" ></div>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="map-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.rua}" name="rua" id="rua" placeholder="Rua" readonly>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="map-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.bairro}" name="bairro" id="bairro" placeholder="Bairro" readonly>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="map-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.cidade}" name="cidade" id="cidade" placeholder="Cidade" readonly>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="map-outline"></ion-icon>
+                    <input type="text" th:field="*{endereco.estado}" name="estado" id="estado" placeholder="Estado" readonly>
+                </div>
+            </div>
         </div>
-        <div class="inputbox">
-            <ion-icon name="mail-outline"></ion-icon>
-            <input type="email" id="email" name="email" required>
-            <label for="email">E-mail</label>
-            <!-- Espaço para a mensagem de erro do email -->
-            <p id="email-error" style="color: red;"></p>
-        </div>
-        <div class="inputbox">
-            <ion-icon name="lock-closed-outline"></ion-icon>
-            <input type="password" id="password" name="password" required>
-            <label for="password">Senha</label>
-        </div>
-        <div class="inputbox">
-            <ion-icon name="lock-closed-outline"></ion-icon>
-            <input type="password" id="passwordcon" name="passwordcon" required>
-            <label for="passwordcon">Confirme sua senha</label>
-            <!-- Espaço para a mensagem de erro da senha -->
-            <p id="password-error" style="color: red;"></p>
-        </div>
+
         <button type="submit">Cadastre-se</button>
         <div class="register">
             <p>Já possui uma conta? <a href="/login">Login</a></p>

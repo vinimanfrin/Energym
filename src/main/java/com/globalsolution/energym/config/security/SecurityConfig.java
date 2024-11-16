@@ -50,7 +50,7 @@ public class SecurityConfig {
                     httpForm.defaultSuccessUrl("/",true);
                 })
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/auth/signup","/css/**", "/js/**","/h2-console/***").permitAll();
+                    registry.requestMatchers("/auth/signup","/css/**", "/js/**","/h2-console/***","/req/signup").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .build();
