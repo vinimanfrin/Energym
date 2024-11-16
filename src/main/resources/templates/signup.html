@@ -7,6 +7,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="/css/auth/signup.css">
     <script src="/js/signup.js" defer></script>
+    <script th:src="@{/js/endereco.js}"></script>
 </head>
 <body>
 <section>
@@ -83,5 +84,11 @@
         </div>
     </form>
 </section>
+<script>
+    // Inicializa o handler de CEP
+    window.onload = function() {
+        inicializarCepHandler();
+    };
+</script>
 </body>
 </html>
