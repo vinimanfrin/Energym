@@ -2,6 +2,8 @@ package com.globalsolution.energym.domain.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "academias")
 public class Academia {
@@ -17,6 +19,9 @@ public class Academia {
 
     @OneToOne
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "academia")
+    private List<Exercicio> exercicios;
 
     public Academia() {
     }
@@ -67,5 +72,9 @@ public class Academia {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
     }
 }
