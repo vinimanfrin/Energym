@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <h1>Home</h1>
+<div class="menu-container">
+    <div class="menu">
+        <a href="/usuarios/pesquisar" class="menu-item">
+            <ion-icon name="search-outline"></ion-icon>
+            Pesquisar Usuário
+        </a>
+        <a href="/exercicios/ultimos" class="menu-item">
+            <ion-icon name="time-outline"></ion-icon>
+            Últimos Exercícios
+        </a>
+        <a href="/logout" class="menu-item logout">
+            <ion-icon name="log-out-outline"></ion-icon>
+            Logout
+        </a>
+    </div>
+</div>
 </body>
 </html>
