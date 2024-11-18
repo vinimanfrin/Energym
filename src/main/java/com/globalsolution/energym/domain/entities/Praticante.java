@@ -23,6 +23,18 @@ public class Praticante {
     private double pontos;
     private Integer sexo;
 
+    public Praticante() {
+    }
+
+    public Praticante(Long id,String cpf, String email, LocalDate dataNascimento, double pontos, Integer sexo) {
+        this.id = id;
+        this.cpf = cpf;
+        this.email = email;
+        this.dataNascimento = dataNascimento;
+        this.pontos = pontos;
+        this.sexo = sexo;
+    }
+
     public Long getId() {
         return id;
     }

@@ -17,7 +17,7 @@ public class Academia {
     @OneToOne
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
 
     @OneToMany(mappedBy = "academia")

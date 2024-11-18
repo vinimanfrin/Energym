@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #262c57;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #262c57;
+    color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #262c57;
+    font-weight: bold;
+}
+
+.pagination span {
+    color: #555;
+}

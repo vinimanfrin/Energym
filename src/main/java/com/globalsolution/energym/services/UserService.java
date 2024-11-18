@@ -2,6 +2,8 @@ package com.globalsolution.energym.services;
 
 import com.globalsolution.energym.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,5 +30,14 @@ public class UserService implements UserDetailsService {
         }else{
             throw new UsernameNotFoundException(username);
         }
+    }
+
+    public com.globalsolution.energym.domain.entities.User authenticated() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return findByUsername(authentication.getName());
+    }
+
+    public com.globalsolution.energym.domain.entities.User findByUsername(String username){
+        return repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User não encontrado para o username: " + username));
     }
 }

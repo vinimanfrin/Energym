@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Últimos Exercícios</title>
+    <link rel="stylesheet" href="/css/exercicios.css">
+</head>
+<body>
+<div class="container">
+    <h1>Últimos Exercícios</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Academia</th>
+            <th>Praticante</th>
+            <th>Tipo</th>
+            <th>Distância (km)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exercicio : ${exerciciosPage.content}">
+            <td th:text="${exercicio.id}"></td>
+            <td th:text="${exercicio.academia.nome}"></td>
+            <td th:text="${exercicio.praticante.email}"></td>
+            <td th:text="${exercicio.tipo}"></td>
+            <td th:text="${exercicio.km}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a th:href="@{/exercicios(page=${currentPage - 1}, size=10)}"
+           th:if="${currentPage > 0}">Anterior</a>
+
+        <span th:text="'Página ' + ${currentPage + 1} + ' de ' + ${totalPages}"></span>
+
+        <a th:href="@{/exercicios(page=${currentPage + 1}, size=10)}"
+           th:if="${currentPage + 1 < totalPages}">Próximo</a>
+    </div>
+</div>
+</body>
+</html>
