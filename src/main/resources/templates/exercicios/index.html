@@ -10,11 +10,11 @@
 <div class="container">
     <h1>Últimos Exercícios</h1>
 
-    <div th:if="${successMessage}" style="color: green;">
+    <div id="successMessage" th:if="${successMessage}" style="color: green;">
         <p th:text="${successMessage}"></p>
     </div>
 
-    <table>
+    <table id="exerciseTable">
         <thead>
         <tr>
             <th>ID</th>
@@ -45,5 +45,31 @@
            th:if="${currentPage + 1 < totalPages}">Próximo</a>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const successMessage = document.getElementById("successMessage");
+        const table = document.getElementById("exerciseTable");
+
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.style.opacity = "0";
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 500);
+            }, 3000);
+
+
+            if (table) {
+                const firstRow = table.querySelector("tbody tr");
+                if (firstRow) {
+                    firstRow.classList.add("highlight");
+                    setTimeout(() => {
+                        firstRow.classList.remove("highlight");
+                    }, 3000);
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>

@@ -40,6 +40,9 @@ public class ExercicioController {
             @RequestParam(defaultValue = "10") int size,
             Model model) {
         Page<Exercicio> exerciciosPage = service.getPageExercicios(page, size);
+        if (novoRegistro){
+            model.addAttribute("successMessage","Exercício cadastrado com sucesso!");
+        }
         model.addAttribute("exerciciosPage", exerciciosPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", exerciciosPage.getTotalPages());

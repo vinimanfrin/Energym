@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,7 +24,7 @@ public class ExercicioService {
 
     public Page<Exercicio> getPageExercicios(int page, int size) {
         Academia academiaAutenticada = academiaService.findByUserId(userService.authenticated().getId());
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC,"id"));
         return repository.findAllByAcademiaId(pageable,academiaAutenticada.getId());
     }
 
