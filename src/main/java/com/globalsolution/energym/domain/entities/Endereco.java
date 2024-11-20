@@ -1,5 +1,6 @@
 package com.globalsolution.energym.domain.entities;
 
+import com.globalsolution.energym.dto.EnderecoCreateDTO;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -102,5 +103,14 @@ public class Endereco {
     @Override
     public int hashCode() {
         return Objects.hash(id, numero, rua, bairro, cidade, estado, cep);
+    }
+
+    public void updateData(EnderecoCreateDTO endereco) {
+        this.rua = endereco.getRua();
+        this.bairro = endereco.getBairro();
+        this.cidade = endereco.getCidade();
+        this.estado = endereco.getEstado();
+        this.numero = endereco.getNumero();
+        this.cep = endereco.getCep();
     }
 }

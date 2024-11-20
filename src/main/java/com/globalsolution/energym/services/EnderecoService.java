@@ -23,4 +23,8 @@ public class EnderecoService {
                 enderecoCreateDTO.getCep()
         ));
     }
+
+    public Endereco save(Endereco endereco) {
+        return repository.save(endereco);
+    }
 }

@@ -40,4 +40,8 @@ public class UserService implements UserDetailsService {
     public com.globalsolution.energym.domain.entities.User findByUsername(String username){
         return repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User não encontrado para o username: " + username));
     }
+
+    public com.globalsolution.energym.domain.entities.User save(com.globalsolution.energym.domain.entities.User user) {
+        return repository.save(user);
+    }
 }

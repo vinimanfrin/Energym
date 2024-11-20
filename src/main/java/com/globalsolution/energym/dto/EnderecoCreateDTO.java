@@ -1,5 +1,6 @@
 package com.globalsolution.energym.dto;
 
+import com.globalsolution.energym.domain.entities.Endereco;
 import jakarta.validation.constraints.NotBlank;
 
 public class EnderecoCreateDTO {
@@ -33,6 +34,15 @@ public class EnderecoCreateDTO {
         this.cidade = cidade;
         this.estado = estado;
         this.cep = cep;
+    }
+
+    public EnderecoCreateDTO(Endereco endereco) {
+        this.numero = endereco.getNumero();
+        this.rua = endereco.getRua();
+        this.bairro = endereco.getBairro();
+        this.cidade = endereco.getCidade();
+        this.estado = endereco.getEstado();
+        this.cep = endereco.getCep();
     }
 
     public String getNumero() {

@@ -1,5 +1,6 @@
 package com.globalsolution.energym.domain.entities;
 
+import com.globalsolution.energym.dto.AcademiaCreateDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -76,5 +77,10 @@ public class Academia {
 
     public List<Exercicio> getExercicios() {
         return exercicios;
+    }
+
+    public void updateData(AcademiaCreateDTO academiaCreateDTO) {
+        this.cnpj = academiaCreateDTO.getCnpj();
+        this.nome = academiaCreateDTO.getNome();
     }
 }
