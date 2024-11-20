@@ -9,6 +9,7 @@ import com.globalsolution.energym.services.AcademiaService;
 import com.globalsolution.energym.services.ExercicioService;
 import com.globalsolution.energym.services.PraticanteService;
 import com.globalsolution.energym.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,11 +39,12 @@ public class ExercicioController {
             @RequestParam(defaultValue = "false") boolean novoRegistro,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            Model model) {
+            Model model, HttpServletRequest httpServletRequest) {
         Page<Exercicio> exerciciosPage = service.getPageExercicios(page, size);
         if (novoRegistro){
             model.addAttribute("successMessage","Exercício cadastrado com sucesso!");
         }
+        model.addAttribute("currentPath", httpServletRequest.getRequestURI());
         model.addAttribute("exerciciosPage", exerciciosPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", exerciciosPage.getTotalPages());
@@ -50,9 +52,10 @@ public class ExercicioController {
     }
 
     @GetMapping("/form-registrar/{cpf}")
-    public String getFormRegistrarNovoExercicio(Model model, @PathVariable("cpf") String cpfParticipante){
+    public String getFormRegistrarNovoExercicio(Model model, @PathVariable("cpf") String cpfParticipante, HttpServletRequest httpServletRequest){
         Praticante praticante = praticanteService.buscarPorCpf(cpfParticipante);
         Academia academiaAutenticada = academiaService.findByUserId(userService.authenticated().getId());
+        model.addAttribute("currentPath", httpServletRequest.getRequestURI());
         model.addAttribute("praticante",praticante);
         model.addAttribute("novoExercicioDTO",new NovoExercicioDTO(academiaAutenticada.getId(),praticante.getId(),null,0));
         return "exercicios/registrar";

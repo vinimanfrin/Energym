@@ -3,8 +3,10 @@
 <head>
     <title>Registrar Exercício</title>
     <link rel="stylesheet" href="/css/registrar-exercicios.css">
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
+<div th:replace="header :: header(currentPath=${currentPath})"></div>
 <h1>Registrar Novo Exercício</h1>
 
 <div th:if="${errorMessage}" style="color: red;">

@@ -2,6 +2,7 @@ package com.globalsolution.energym.controllers;
 
 import com.globalsolution.energym.domain.entities.Praticante;
 import com.globalsolution.energym.services.PraticanteService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +18,15 @@ public class PraticanteController {
     private PraticanteService praticanteService;
 
     @GetMapping("/form-pesquisar")
-    public String getFormPesquisarPraticantes(){
+    public String getFormPesquisarPraticantes(Model model, HttpServletRequest httpServletRequest){
+        model.addAttribute("currentPath", httpServletRequest.getRequestURI());
         return "praticantes/pesquisar-praticantes";
     }
 
     @GetMapping("/pesquisar")
-    public String pesquisarPraticante(@RequestParam("cpf") String cpf, Model model) {
+    public String pesquisarPraticante(@RequestParam("cpf") String cpf, Model model, HttpServletRequest httpServletRequest) {
         Praticante praticante = praticanteService.buscarPorCpf(cpf);
+        model.addAttribute("currentPath", httpServletRequest.getRequestURI());
 
         if (praticante != null) {
             model.addAttribute("praticante", praticante);
