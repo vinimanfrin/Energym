@@ -27,4 +27,8 @@ public class ExercicioService {
         Pageable pageable = PageRequest.of(page, size);
         return repository.findAllByAcademiaId(pageable,academiaAutenticada.getId());
     }
+
+    public Exercicio save(Exercicio exercicio) {
+        return repository.save(exercicio);
+    }
 }

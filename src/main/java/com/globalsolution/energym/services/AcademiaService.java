@@ -32,4 +32,8 @@ public class AcademiaService {
     public Academia findByUserId(Long id) {
         return repository.findByUserId(id).orElseThrow(() -> new EntityNotFoundException("Academia não encontrada para o userId: " + id));
     }
+
+    public Academia findById(Long academiaId) {
+        return repository.findById(academiaId).orElseThrow(() -> new EntityNotFoundException("Academia não encontrada para o id:" + academiaId));
+    }
 }

@@ -9,6 +9,11 @@
 <body>
 <div class="container">
     <h1>Últimos Exercícios</h1>
+
+    <div th:if="${successMessage}" style="color: green;">
+        <p th:text="${successMessage}"></p>
+    </div>
+
     <table>
         <thead>
         <tr>

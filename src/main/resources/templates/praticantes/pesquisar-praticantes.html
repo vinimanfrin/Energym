@@ -30,6 +30,8 @@
         <p><strong>Sexo:</strong>
             <span th:text="${praticante.getSexo().getDescricao()}"></span>
         </p>
+
+        <a th:href="@{/exercicios/form-registrar/{cpf}(cpf=${praticante.cpf})}">Registrar Exercício</a>
     </div>
 
     <div class="error-message" th:if="${notFound}">
