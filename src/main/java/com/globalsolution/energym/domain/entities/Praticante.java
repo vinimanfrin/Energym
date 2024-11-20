@@ -82,4 +82,8 @@ public class Praticante {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo.getCod();
     }
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
+    }
 }

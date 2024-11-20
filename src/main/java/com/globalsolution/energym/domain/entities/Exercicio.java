@@ -21,14 +21,17 @@ public class Exercicio {
 
     private double km;
 
+    private double pontos;
+
     public Exercicio() {
     }
 
-    public Exercicio(Long id, Academia academia, Integer tipo, double km, Praticante praticante) {
+    public Exercicio(Long id, Academia academia, Integer tipo, double km, double pontos, Praticante praticante) {
         this.id = id;
         this.academia = academia;
         this.tipo = tipo;
         this.km = km;
+        this.pontos = pontos;
         this.praticante = praticante;
     }
 
@@ -70,5 +73,13 @@ public class Exercicio {
 
     public void setPraticante(Praticante praticante) {
         this.praticante = praticante;
+    }
+
+    public double getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(double pontos) {
+        this.pontos = pontos;
     }
 }

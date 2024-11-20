@@ -79,6 +79,7 @@ public class ExercicioController {
             exercicio.setPraticante(praticante);
             exercicio.setTipo(TipoExercicio.toEnum(novoExercicioDTO.getTipo()));
             exercicio.setKm(novoExercicioDTO.getKm());
+            exercicio.setPontos(exercicio.getKm() * exercicio.getTipo().getCod() == 2 ? 100 : 150);
 
             service.save(exercicio);
 
