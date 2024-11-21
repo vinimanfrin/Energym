@@ -5,10 +5,7 @@ import com.globalsolution.energym.domain.entities.Exercicio;
 import com.globalsolution.energym.domain.entities.Praticante;
 import com.globalsolution.energym.domain.enums.TipoExercicio;
 import com.globalsolution.energym.dto.NovoExercicioDTO;
-import com.globalsolution.energym.services.AcademiaService;
-import com.globalsolution.energym.services.ExercicioService;
-import com.globalsolution.energym.services.PraticanteService;
-import com.globalsolution.energym.services.UserService;
+import com.globalsolution.energym.services.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +30,9 @@ public class ExercicioController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private NotificadorPraticante notificadorPraticante;
 
     @GetMapping
     public String listarExercicios(
@@ -83,6 +83,8 @@ public class ExercicioController {
 
             service.save(exercicio);
             praticante.setPontos(praticante.getPontos() + exercicio.getPontos());
+            notificadorPraticante.integrar("Parabéns! Você gerou "+exercicio.getKm()+"Km usando a "+exercicio.getTipo().getDescricao()+" e foi recompensado com "+exercicio.getPontos()+"!");
+
             praticanteService.save(praticante);
 
             return "redirect:/exercicios?novoRegistro=true";
