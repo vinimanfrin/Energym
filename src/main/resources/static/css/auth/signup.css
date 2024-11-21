@@ -89,6 +89,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 20px 0px;
 }
 button:hover {
     background-color: #555;
@@ -124,4 +125,13 @@ button:hover {
     .form-columns {
         flex-direction: column;
     }
+}
+
+.voltar{
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin: 20px auto;
 }
