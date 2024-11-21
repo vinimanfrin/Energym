@@ -71,22 +71,7 @@ public class ExercicioController {
         }
 
         try {
-            Academia academia = academiaService.findById(novoExercicioDTO.getAcademiaId());
-            Praticante praticante = praticanteService.findById(novoExercicioDTO.getPraticanteId());
-
-            Exercicio exercicio = new Exercicio();
-            exercicio.setAcademia(academia);
-            exercicio.setPraticante(praticante);
-            exercicio.setTipo(TipoExercicio.toEnum(novoExercicioDTO.getTipo()));
-            exercicio.setKm(novoExercicioDTO.getKm());
-            exercicio.setPontos(exercicio.getKm() * (exercicio.getTipo().getCod() == 2 ? 100 : 150));
-
-            service.save(exercicio);
-            praticante.setPontos(praticante.getPontos() + exercicio.getPontos());
-            notificadorPraticante.integrar("Parabéns! Você gerou "+exercicio.getKm()+"Km usando a "+exercicio.getTipo().getDescricao()+" e foi recompensado com "+exercicio.getPontos()+"!");
-
-            praticanteService.save(praticante);
-
+            service.saveNewExercicio(novoExercicioDTO);
             return "redirect:/exercicios?novoRegistro=true";
         } catch (Exception e) {
             model.addAttribute("errorMessage", "Ocorreu um erro ao registrar o exercício.");
