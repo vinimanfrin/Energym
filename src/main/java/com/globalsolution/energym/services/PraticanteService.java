@@ -19,16 +19,11 @@ public class PraticanteService {
 
     public Praticante buscarPorCpf(String cpf) {
         Optional<Praticante> praticante = repository.findByCpf(cpf);
-        if (praticante.isPresent()){
-            praticante.get().setPontos(getTotalPontosPraticante(praticante.get()));
-        }
         return praticante.orElse(null);
     }
 
     public Praticante findById(Long praticanteId) {
-        Praticante praticante = repository.findById(praticanteId).orElseThrow(() -> new EntityNotFoundException("Praticante não encontrado para o id: "+ praticanteId));
-        praticante.setPontos(getTotalPontosPraticante(praticante));
-        return praticante;
+        return repository.findById(praticanteId).orElseThrow(() -> new EntityNotFoundException("Praticante não encontrado para o id: "+ praticanteId));
     }
 
     @Transactional
@@ -38,5 +33,9 @@ public class PraticanteService {
             pontos += exercicio.getPontos();
         }
         return pontos;
+    }
+
+    public Praticante save(Praticante praticante) {
+        return repository.save(praticante);
     }
 }
