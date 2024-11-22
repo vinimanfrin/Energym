@@ -55,7 +55,12 @@ public class ExercicioService {
 
         save(exercicio);
         praticante.setPontos(praticante.getPontos() + exercicio.getPontos());
-        notificadorPraticante.integrar("Parabéns! Você gerou "+exercicio.getKm()+"Km usando a "+exercicio.getTipo().getDescricao()+" e foi recompensado com "+exercicio.getPontos()+" pontos!");
+
+        try{
+            notificadorPraticante.integrar("Parabéns! Você gerou "+exercicio.getKm()+"Km usando a "+exercicio.getTipo().getDescricao()+" e foi recompensado com "+exercicio.getPontos()+" pontos!");
+        }catch (Exception ignored){
+            System.out.println("Worker indisponível");
+        }
 
         praticanteService.save(praticante);
     }

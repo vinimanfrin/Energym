@@ -1,5 +1,6 @@
 package com.globalsolution.energym.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.globalsolution.energym.domain.entities.Academia;
 import com.globalsolution.energym.domain.entities.Exercicio;
 import com.globalsolution.energym.domain.entities.Praticante;
